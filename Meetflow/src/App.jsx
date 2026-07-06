@@ -5,7 +5,7 @@ import Landing from "./Components/Landing/Landing";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
+import MeetingRoom from "./Pages/MeetingRoom/MeetingRoom";
 const App = () => {
   return (
     <Routes>
@@ -13,6 +13,10 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route
+  path="/meeting/:meetingId"
+  element={<MeetingRoom />}
+/>
     </Routes>
   );
 };
