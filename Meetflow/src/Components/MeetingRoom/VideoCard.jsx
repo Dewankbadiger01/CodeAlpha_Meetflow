@@ -38,7 +38,7 @@ const VideoCard = ({ name, cameraOn }) => {
   }, [cameraOn]);
 
   return (
-    <div className="relative bg-black rounded-xl overflow-hidden h-full min-h-[350px]">
+    <div className="relative bg-black rounded-xl overflow-hidden h-full min-h-87.5">
       {cameraOn ? (
         <video
           ref={videoRef}
