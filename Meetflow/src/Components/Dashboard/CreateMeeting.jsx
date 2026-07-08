@@ -1,39 +1,73 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const CreateMeeting = ({ onClose }) => {
-      const [meetingTitle, setMeetingTitle] = useState("");
-  const [meetingDate, setMeetingDate] = useState("");
-  const [meetingTime, setMeetingTime] = useState("");
-  const [meetingType, setMeetingType] = useState("Instant");
-  const [description, setDescription] = useState("");
+const CreateMeeting = ({ onClose, editMeeting }) => {
+const [meetingTitle, setMeetingTitle] = useState(
+  editMeeting?.title || ""
+);
+
+const [meetingDate, setMeetingDate] = useState(
+  editMeeting?.date || ""
+);
+
+const [meetingTime, setMeetingTime] = useState(
+  editMeeting?.time || ""
+);
+
+const [meetingType, setMeetingType] = useState(
+  editMeeting?.type || "Instant"
+);
+
+const [description, setDescription] = useState(
+  editMeeting?.description || ""
+);
 const navigate = useNavigate();
- const handleSubmit = (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
 
-  const meetingId = Math.random()
-    .toString(36)
-    .substring(2, 10)
-    .toUpperCase();
+  const meetings =
+    JSON.parse(localStorage.getItem("meetings")) || [];
 
-  const meetingData = {
-    meetingId,
-    meetingTitle,
-    meetingDate,
-    meetingTime,
-    meetingType,
-    description,
-  };
+  if (editMeeting) {
+    const updatedMeetings = meetings.map((meeting) =>
+      meeting.id === editMeeting.id
+        ? {
+            ...meeting,
+            title: meetingTitle,
+            date: meetingDate,
+            time: meetingTime,
+            type: meetingType,
+            description,
+          }
+        : meeting
+    );
 
-  console.log(meetingData);
+    localStorage.setItem(
+      "meetings",
+      JSON.stringify(updatedMeetings)
+    );
 
-  // Save temporarily in localStorage
-  localStorage.setItem("meeting", JSON.stringify(meetingData));
+    alert("Meeting Updated Successfully!");
+  } else {
+    const newMeeting = {
+      id: Date.now().toString(),
+      title: meetingTitle,
+      date: meetingDate,
+      time: meetingTime,
+      type: meetingType,
+      description,
+    };
 
-  // Close modal
+    meetings.push(newMeeting);
+
+    localStorage.setItem(
+      "meetings",
+      JSON.stringify(meetings)
+    );
+
+    alert("Meeting Created Successfully!");
+  }
+
   onClose();
-
-  // Open meeting room
-  navigate(`/meeting/${meetingId}`);
 };
   return (
 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
