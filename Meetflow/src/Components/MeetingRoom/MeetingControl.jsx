@@ -10,7 +10,6 @@ import {
   FiGrid,
   FiPhoneOff,
 } from "react-icons/fi";
-
 const MeetingControl = ({
   micOn,
   setMicOn,
@@ -25,6 +24,15 @@ const MeetingControl = ({
 
   screenStream,
   setScreenStream,
+
+  handRaised,
+  setHandRaised,
+
+  showSettings,
+  setShowSettings,
+
+  showLeaveModal,
+  setShowLeaveModal,
 }) => {
 
   const togglePanel = (panel) => {
@@ -142,7 +150,6 @@ const MeetingControl = ({
           <FiUsers size={24} color="white" />
         </button>
 
-        {/* Whiteboard */}
         <button
           onClick={() => togglePanel("whiteboard")}
           className={`w-14 h-14 rounded-full flex items-center justify-center ${
@@ -155,14 +162,18 @@ const MeetingControl = ({
         </button>
 
         <div className="h-10 border-l border-gray-500" />
-
-        {/* End Call */}
+<button
+  onClick={() => setShowSettings(true)}
+  className="w-14 h-14 rounded-full bg-slate-600 hover:bg-blue-600 flex items-center justify-center"
+>
+  <FiSettings size={24} color="white" />
+</button>
         <button
-          className="w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 flex items-center justify-center"
-        >
-          <FiPhoneOff size={24} color="white" />
-        </button>
-
+  onClick={() => setShowLeaveModal(true)}
+  className="w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 flex items-center justify-center"
+>
+  <FiPhoneOff size={24} color="white" />
+</button>
       </div>
     </div>
   );

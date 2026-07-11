@@ -1,70 +1,47 @@
 import React from "react";
-import {
-  FiWifi,
-  FiClock,
-  FiShield,
-} from "react-icons/fi";
+import { FiCopy } from "react-icons/fi";
 
-const MeetingHeader = ({ meetingId }) => {
-  const time = new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+const MeetingHeader = ({ meetingId, seconds }) => {
+
+  const formatTime = (sec) => {
+    const hrs = String(Math.floor(sec / 3600)).padStart(2, "0");
+    const mins = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+    const secs = String(sec % 60).padStart(2, "0");
+
+    return `${hrs}:${mins}:${secs}`;
+  };
+
+  const copyMeetingId = () => {
+    navigator.clipboard.writeText(meetingId);
+    alert("Meeting ID Copied");
+  };
 
   return (
-    <header className="h-16 bg-[#202124] border-b border-gray-700 px-6 flex items-center justify-between">
+    <header className="h-16 bg-[#1E1F23] border-b border-gray-700 flex justify-between items-center px-6">
 
-      {/* Left */}
-      <div className="flex items-center gap-4">
+      <h1 className="text-2xl font-bold text-white">
+        MeetFlow
+      </h1>
 
-        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
-          M
-        </div>
-
-        <div>
-          <h1 className="text-white text-xl font-bold">
-            MeetFlow
-          </h1>
-
-          <p className="text-xs text-gray-400">
-            Team Meeting
-          </p>
-        </div>
-
-      </div>
-
-      {/* Center */}
-      <div className="hidden md:flex items-center gap-8">
-
-        <div className="flex items-center gap-2 text-gray-300">
-          <FiShield className="text-green-400" />
-          <span>Secure Meeting</span>
-        </div>
-
-        <div className="text-gray-300">
-          ID :
-          <span className="text-blue-400 ml-2 font-semibold">
-            {meetingId}
-          </span>
-        </div>
-
-      </div>
-
-      {/* Right */}
       <div className="flex items-center gap-6">
 
-        <div className="flex items-center gap-2 text-green-400">
-          <FiWifi />
-          <span className="text-sm">Connected</span>
+        <div className="bg-[#2A2B30] px-4 py-2 rounded-lg text-green-400 font-semibold">
+          ⏱ {formatTime(seconds)}
         </div>
 
-        <div className="flex items-center gap-2 text-gray-300">
-          <FiClock />
-          <span>{time}</span>
-        </div>
+        <div className="bg-[#2A2B30] px-4 py-2 rounded-lg flex items-center gap-3">
 
-        <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
-          D
+          <span className="text-white">
+            {meetingId}
+          </span>
+
+          <button
+            onClick={copyMeetingId}
+            className="text-blue-400 hover:text-blue-300"
+          >
+            <FiCopy size={20} />
+          </button>
+
         </div>
 
       </div>
