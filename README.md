@@ -104,14 +104,22 @@ npm run dev
 ## 📸 Screens
 
 * Landing Page
-* Login
-* Register
-* Dashboard
-* Create Meeting
-* Join Meeting
-* Meeting Room
-* Chat Sidebar
-* Participants Panel
+* <img width="930" height="442" alt="image" src="https://github.com/user-attachments/assets/1c939e7c-5d35-4851-87fa-935115711732" />
+
+* Login <img width="407" height="403" alt="image" src="https://github.com/user-attachments/assets/dba93f80-08d8-42b9-bf45-b60bddd6d26a" />
+
+* Register <img width="427" height="383" alt="image" src="https://github.com/user-attachments/assets/8cc5a268-f90f-4fa2-9677-ca7456f77ef1" />
+
+* Dashboard<img width="959" height="440" alt="image" src="https://github.com/user-attachments/assets/252ba8cd-e82b-4633-b22d-3366042c9563" />
+
+* Create Meeting <img width="494" height="383" alt="image" src="https://github.com/user-attachments/assets/dc76c5f5-81a1-4a4f-a68d-b8cdc847f6d0" />
+
+* Join Meeting <img width="312" height="290" alt="image" src="https://github.com/user-attachments/assets/84da286f-c122-42ac-9164-76089b401e7e" />
+
+* Meeting Room<img width="959" height="428" alt="image" src="https://github.com/user-attachments/assets/7f431cd5-9509-430d-a8ef-6ce1a149e3e7" />
+
+* Chat Sidebar<img width="281" height="400" alt="image" src="https://github.com/user-attachments/assets/05b2322d-988a-4486-adc2-99466a0d1e3a" />
+
 
 ---
 
